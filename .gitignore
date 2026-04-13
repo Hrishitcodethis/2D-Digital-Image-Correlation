@@ -1,0 +1,33 @@
+# Images and PDFs
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tiff
+*.tif
+*.pdf
+Images/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Virtual environments
+venv/
+env/
+.env/
