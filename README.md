@@ -14,6 +14,28 @@ Based on:
 5. **Gauge length** — Euclidean distance between marker pair centroids, converted to mm via calibration factor from `config1.dat`.
 6. **Engineering strain** — `e = (d - d0) / d0` where `d0` is the initial gauge length.
 
+## Results
+
+### Dataset: dbe0b (21,199 frames)
+
+| Marker Pair | Initial Gauge Length | Max Strain | Final Strain |
+|-------------|---------------------|------------|--------------|
+| 0 – 2       | 30.84 mm            | 1.71%      | 0.90%        |
+| 1 – 3       | 30.91 mm            | 1.65%      | 0.76%        |
+
+![dbe0b results](results/dbe0b_results.png)
+
+### Dataset: dbe0c (18,835 frames)
+
+| Marker Pair | Initial Gauge Length | Max Strain | Final Strain |
+|-------------|---------------------|------------|--------------|
+| 0 – 2       | 33.05 mm            | 1.59%      | 0.83%        |
+| 1 – 3       | 33.17 mm            | 1.52%      | 0.86%        |
+
+![dbe0c results](results/dbe0c_results.png)
+
+Both specimens show linear elastic loading reaching ~1.6–1.7% peak strain, with the top marker pair separating from the bottom pair as the specimen elongates under tension.
+
 ## Dependencies
 
 ```
@@ -23,11 +45,12 @@ pip install numpy opencv-python matplotlib
 ## Project Structure
 
 ```
-├── tracker.py    # Marker detection, matching, gauge/strain computation
-├── main.py       # Entry point — runs tracking and plots results
-└── Images/
-    ├── dbe0b/    # Dataset 1: ~21,000 frames
-    └── dbe0c/    # Dataset 2: ~18,800 frames
+├── tracker.py       # Marker detection, matching, gauge/strain computation
+├── main.py          # Entry point — runs tracking and plots results
+├── results/         # Output plots
+└── Images/          # Raw image sequences (not tracked in git)
+    ├── dbe0b/       # Dataset 1: ~21,000 frames + config1.dat
+    └── dbe0c/       # Dataset 2: ~18,800 frames + config1.dat
 ```
 
 ## Usage
@@ -45,25 +68,6 @@ python3 main.py --step 1
 # Quick test (first 200 frames)
 python3 main.py --max-frames 200
 ```
-
-## Sample Output
-
-```
-Dataset: dbe0b
-Total images: 21199
-
-Marker positions (frame 0):
-  Marker 0: (196.9, 138.2) px
-  Marker 1: (233.5, 137.3) px
-  Marker 2: (204.5, 415.6) px
-  Marker 3: (237.6, 415.5) px
-
-Gauge length results (mm):
-  Pair 0-2: L0=30.84 mm, max strain=1.71%
-  Pair 1-3: L0=30.91 mm, max strain=1.65%
-```
-
-Generates a plot with gauge length, engineering strain, and marker y-coordinates vs frame index.
 
 ## Calibration
 

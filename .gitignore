@@ -1,12 +1,14 @@
-# Images and PDFs
+# Images and PDFs (raw data)
 *.jpg
 *.jpeg
-*.png
 *.bmp
 *.tiff
 *.tif
 *.pdf
 Images/
+
+# Keep result plots
+!results/
 
 # Python
 __pycache__/
